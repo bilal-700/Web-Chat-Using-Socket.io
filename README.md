@@ -15,14 +15,14 @@ Web based chat application using socket.io &amp; node.js
   -	Express
 
 ## Steps for running code:
-- Open CMD and go to the directory where you want to place the project and then enter.
+- Open CMD and go to the directory where you want to place the project and then enter:
   - `mkdir Web-Chat`
 - Place the files you downloaded from github in the folder _Web-Chat_. Now type ccommand in the cmd:
   - `cd Web-Chat`
   - `code .`
 - Now Visual studio code will open and _Web-Chat_ will be there as a project.
 - Press **_Ctrl + Shift + `_**
-- Terminal will open in the vs code and enter 
+- Terminal will open in the vs code and enter:
   - `npm install`
 - Ths will download node modules and the dependcies given in the _**package.json**_
 - Now simply type `node server.js`
