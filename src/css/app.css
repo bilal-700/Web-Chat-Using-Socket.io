@@ -1,0 +1,185 @@
+body {
+    overflow-y: hidden;
+    font-family: 'Itim';
+}
+
+.container-fluid {
+    flex-grow: -1;
+}
+
+h1 {
+    margin: 24px 0;
+}
+
+.messages p {
+    margin: 0px 0;
+}
+
+.mymessages {
+    color: black;
+    letter-spacing: 1px;
+    font-size: 18px;
+    padding: 15px;
+}
+
+ul.messages.list-group {
+    max-height: 50vh;
+    overflow-y: scroll;
+}
+
+.comment-box-main {
+    background: #ffa190;
+    height: 60px;
+    width: 90%;
+    position: relative;
+    left: 70%;
+    transform: translateX(-70%);
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+.button {
+    background-color: #ff7259;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    height: 35px;
+    transition: transform 80ms ease-in;
+    font-family: 'Itim';
+    outline: none;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+    letter-spacing: 2px;
+}
+
+.link:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.button:focus {
+    background-color: #ffa190;
+}
+
+.button:hover {
+    background-color: #ffa190;
+}
+
+.well {
+    background-color: #ffd0c7;
+    border-radius: 0px;
+    border: none;
+    margin-top: 35px;
+}
+
+.room-title {
+    color: white;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to top, #ff7259, #ffa190);
+}
+
+.center {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#chat-messages {
+    margin-bottom: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE 10+ */
+}
+
+.sender-info {
+    color: #ff7259;
+    margin-top: 10px;
+    font-size: 15px;
+    margin-right: 5px;
+    text-align: right;
+}
+
+.chat-box {
+    bottom: 30px;
+    right: 0;
+    position: absolute;
+    border: 0;
+    border-top: 1px groove white;
+    border-left: 1px groove white;
+    font-size: small;
+}
+
+.chat-card {
+    border-radius: 0px;
+    margin-bottom: 5px;
+    margin-left: 30px;
+    padding: 10px;
+    background-color: #ffb1a3;
+    width: auto !important;
+}
+
+.textarea {
+    max-height: 35px;
+    display: block;
+    width: 100%;
+    overflow: auto;
+    resize: both;
+    line-height: 20px;
+    margin-left:15px
+}
+
+.textarea[contenteditable]:empty::before {
+    content: "Placeholder still possible";
+    color: gray;
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .chat-opened::-webkit-scrollbar {
+        display: none;
+    }
+    #chat-messages {
+        height: 60vh;
+    }
+    .chat-box {
+        bottom: 90px;
+        margin-bottom: 0px;
+    }
+}
+
+@media (min-width:768px) {
+    .card {
+        width: 50%;
+        z-index: 1000;
+    }
+}

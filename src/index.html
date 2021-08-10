@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>WeB ChAt</title>
+  <link href="images/logo.ico" rel="icon" type="image/png" />
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <script src='/js/jquery-1.11.0.js'></script>
+  <link href="https://fonts.googleapis.com/css?family=Nerko One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Londrina Solid&effect=shadow-multiple|3d-float" rel='stylesheet'>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="wrap">
+      <div class="arrow animated bounce"></div>
+    </div>
+    <div class="maincontainer">
+      <div class="container">
+        <div id="logo">WeB ChAt</div>
+        <div class="navigation-wrapper">
+          <div class="navigation-button">
+            <i class="fa fa-bars"></i>
+          </div>
+          <div class="navigation-menu">
+            <ul style='margin-top: 25%;'>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="options.html">Services</a></li>
+            </ul>
+          </div>
+        </div>
+        <section class="hero">
+          <h1>Providing with wonderful<br> <span class='span'> CHATTING Experience</span></h1>
+          <div class="button">
+            <a href="options.html" class="btn1">Get Started</a>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script>
+      var navButton = document.querySelector('.navigation-button');
+      var navMenu = document.querySelector('.navigation-menu');
+      var win = window;
+
+      function openMenu(event) {
+
+        navButton.classList.toggle('active');
+        navMenu.classList.toggle('active');
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+
+      function closeMenu(event) {
+        if (navButton.classList.contains('active')) {
+          navButton.classList.remove('active');
+          navMenu.classList.remove('active');
+        }
+      }
+      navButton.addEventListener('click', openMenu, false);
+
+      win.addEventListener('click', closeMenu, false);
+    </script>
+
+    <div id="wrapper">
+      <div id="slider-wrap">
+        <ul id="slider">
+          <li data-color="#ff6347">
+            <div>
+              <h3 id='h3'>Real Time Chat Application</h3>
+              <span>By using HTML, CSS, node.js, express, socket.io</span>
+            </div>
+          </li>
+
+          <li data-color="#ff7259">
+            <div>
+              <h3 id='h3'>Live Video Streaming</h3>
+              <span>By using HTML, CSS, node.js, express, socket.io</span>
+            </div>
+          </li>
+        </ul>
+
+        <div class="btns" id="next">&#8594;</div>
+        <div class="btns" id="previous">&#8592;</div>
+        <div id="counter"></div>
+
+        <div id="pagination-wrap">
+          <ul>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <nav>
+      <ul>
+        <li><a href="mailto:muhammadbilal03078@gmail.com">Email (muhammadbilal03078@gmail.com)</a></li><br />
+        <li><a href="tel:+92-314-362-2700">Mobile no. (+92)314-3622700</a></li><br />
+        <li class='logo'>
+          <p style='margin-top:7px'>👋</p>
+        </li><br />
+      </ul>
+    </nav>
+  </footer>
+  <script>
+    //current position
+    var pos = 0;
+    //number of slides
+    var totalSlides = $('#slider-wrap ul li').length;
+    //get the slide width
+    var sliderWidth = $('#slider-wrap').width();
+
+
+    $(document).ready(function () {
+
+      $('#slider-wrap ul#slider').width(sliderWidth * totalSlides);
+
+      //next slide 	
+      $('#next').click(function () {
+        slideRight();
+      });
+
+      //previous slide
+      $('#previous').click(function () {
+        slideLeft();
+      });
+
+      var autoSlider = setInterval(slideRight, 3000);
+
+      //for each slide 
+      $.each($('#slider-wrap ul li'), function () {
+        //set its color
+        var c = $(this).attr("data-color");
+        $(this).css("background", c);
+
+        //create a pagination
+        var li = document.createElement('li');
+        $('#pagination-wrap ul').append(li);
+      });
+
+      //counter
+      countSlides();
+
+      //pagination
+      pagination();
+
+      //hide/show controls/btns when hover
+      //pause automatic slide when hover
+      $('#slider-wrap').hover(
+        function () {
+          $(this).addClass('active');
+          clearInterval(autoSlider);
+        },
+        function () {
+          $(this).removeClass('active');
+          autoSlider = setInterval(slideRight, 3000);
+        }
+      );
+
+
+
+    }); //DOCUMENT READY
+
+    /***********
+     SLIDE LEFT
+    ************/
+    function slideLeft() {
+      pos--;
+      if (pos == -1) {
+        pos = totalSlides - 1;
+      }
+      $('#slider-wrap ul#slider').css('left', -(sliderWidth * pos));
+
+      //*> optional
+      countSlides();
+      pagination();
+    }
+
+
+    /************
+     SLIDE RIGHT
+    *************/
+    function slideRight() {
+      pos++;
+      if (pos == totalSlides) {
+        pos = 0;
+      }
+      $('#slider-wrap ul#slider').css('left', -(sliderWidth * pos));
+
+      //*> optional 
+      countSlides();
+      pagination();
+    }
+
+    /************************
+     //*> OPTIONAL SETTINGS
+    ************************/
+    function countSlides() {
+      $('#counter').html(pos + 1 + ' / ' + totalSlides);
+    }
+
+    function pagination() {
+      $('#pagination-wrap ul li').removeClass('active');
+      $('#pagination-wrap ul li:eq(' + pos + ')').addClass('active');
+    }
+  </script>
+  <script>
+    $(document).ready(function ($) {
+
+      $(window).on('scroll', function () {
+
+        //ADD .TIGHT
+        if ($(window).scrollTop() + $(window).height() > $('.wrapper').outerHeight()) {
+          $('body').addClass('tight');
+          $('.arrow').hide();
+        } else {
+          $('body').removeClass('tight');
+          $('.arrow').show();
+        }
+      });
+
+      //BACK TO PRESENTATION MODE
+      $("html").on("click", "body.tight .wrapper", function () {
+        $('html, body').animate({
+          scrollTop: $('.wrapper').outerHeight() - $(window).height()
+        }, 500);
+      });
+
+    });
+
+    $('.arrow').click(function () {
+      $("html").animate({
+        scrollTop: $('html').prop("scrollHeight")
+      }, 1200);
+    });
+  </script>
+</body>
+
+</html>
